@@ -8,39 +8,118 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/Tictactoe.css">
-  </head>
-  <body>
-    <h1></h1>
-<div class="container">
-  <div class="jumbotron">
-  <table>
-    <tr>
-    <td id="a" onclick="opa()"></td>
-    <td id="b" onclick ="opa()"></td>
-    <td id="c" onclick></td>
-  </tr>
-  <tr>
-    <td id="d" onclick></td>
-    <td id="e" onclick></td>
-    <td id="f" onclick></td>
-  </tr>
-  <tr>
-    <td id="g" onclick></td>
-    <td id="h" onclick></td>
-    <td id="i" onclick></td>
-  </tr>
-</table>
-</div>
-</div>
 
+    <title>Tic Tac Toe</title>
+    <style type="text/css">
+    body table {
+        border-collapse: collapse;
+        width: 150px;
+        margin: 10px;
+    }
 
+    body table td {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #555;
+        cursor: pointer;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <button title="Start new game!" id="start">Play</button>
+    <div id="playground"></div>
+    <p id="result" />
+    <p id="result1" />
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var cells;
+
+        function refresh() {
+            $("#playground").remove("table");
+            var table = $("<table>")
+            var tr;
+            $.each(cells, function(i) {
+                if (!(i % 3) || !tr) {
+                    tr = $("<tr>");
+                };
+                var td = $("<td>");
+                td.attr("id", "cell_" + i);
+                td.html(cells[i]);
+                td.click(function() {
+                    $("#result").text("You've clicked on cell number " + $(this).attr("id").split("_")[1] + ".");
+                      console.log();
+                })
+              
+                table.append(tr.append(td));
+            });
+            $("#playground").append(table);
+            
+         
+         
+            
+            var count = 1;
+  $("td").on("click", function(){
+  $(this).html("X");})
+          
+            
+$("#playground").click(function() {
+   
+  
+    $("#result1").html("My current count is: "+count);
+   console.log(count);  
+  
+        
+    
+  
+      
+      
+     count++; 
+  
+ if (count%2 != 0) {        
+                        
+            $("td").on("click", function(){
+             $(this).html("X");   
+  }) 
+ }
+            else {
+            $("td").on("click", function(){
+  $(this).html("O");
+               
+}
+)       
+                
+            }
+            
+         
+            
+        });    
+  
+            
+        }
+
+        $("#start").click(function() {
+            cells = ["", "", "", "", "", "", "", "", ""];
+            refresh();
+        })
+
+    })
+     
+        
+    </script>
+</body>
+
+</html>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src="js/Tictactoe.js"></script>
   </body>
 </html>
