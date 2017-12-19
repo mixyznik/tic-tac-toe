@@ -11,10 +11,14 @@
 
     <title>Tic Tac Toe</title>
     <style type="text/css">
+        #playground {
+             width: 150px;
+             margin: 10px;
+        }
     body table {
         border-collapse: collapse;
         width: 150px;
-        margin: 10px;
+        
     }
 
     body table td {
@@ -61,11 +65,16 @@
             $("#playground").append(table);
             
          
-         
+        
             
             var count = 1;
-  $("td").on("click", function(){
-  $(this).html("X");})
+    console.log(count); 
+      
+            $("td").one("click", function(){
+	       $(this).html("X");})
+            
+     
+    
           
             
 $("#playground").click(function() {
@@ -73,28 +82,34 @@ $("#playground").click(function() {
   
     $("#result1").html("My current count is: "+count);
    console.log(count);  
+    count++; 
   
-        
-    
+       
   
       
       
-     count++; 
-  
- if (count%2 != 0) {        
+     
+ if (count%2 != 0 && count<=9) {        
                         
             $("td").on("click", function(){
-             $(this).html("X");   
-  }) 
+             $(this).html("X");
+                $("td").off();
+	}) 
  }
-            else {
+            else if (count%2 ==0 && count<=9) {
             $("td").on("click", function(){
-  $(this).html("O");
+	$(this).html("O");
+                $("td").off();
                
 }
 )       
                 
             }
+       else {
+           count="kraj";
+           $("td").css("background-color", "yellow");
+           return;
+       }
             
          
             
